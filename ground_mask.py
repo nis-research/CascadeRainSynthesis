@@ -55,7 +55,6 @@ SELECTED_CLASSES = {
 
 def create_ground_mask(image_path, ground_mask_path, feature_extractor, model, device):
 
-    print(f"opening img: {image_path}")
     image = Image.open(image_path).convert("RGB")
     orig_size = image.size
 
@@ -90,41 +89,33 @@ def create_ground_mask(image_path, ground_mask_path, feature_extractor, model, d
 
 def batch_create_ground_masks(input_folder, ground_dir):
 
-    #model_name = "nvidia/segformer-b2-finetuned-ade-512-512"
-    #feature_extractor = SegformerImageProcessor.from_pretrained(model_name)
-    #segformer_model = SegformerForSemanticSegmentation.from_pretrained(model_name, use_safetensors=True)
-    #segformer_model.eval() 
-    print("CUDA available:", torch.cuda.is_available())
-    print("CUDA version:", torch.version.cuda)
-    print("Device count:", torch.cuda.device_count()) 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"[INFO] Segformer Using device: {device}")
-    # test save
-    
-    local_model_path = "./huggingface/segformer"
-    feature_extractor = SegformerImageProcessor.from_pretrained(local_model_path)
-    segformer_model = SegformerForSemanticSegmentation.from_pretrained(local_model_path, use_safetensors=True).to(device)
+      
+    model_name = "nvidia/segformer-b2-finetuned-ade-512-512"
+
+    feature_extractor = SegformerImageProcessor.from_pretrained(model_name)
+    segformer_model = SegformerForSemanticSegmentation.from_pretrained(
+        model_name
+    ).to(device)
     segformer_model.eval()
+
+    # Alternative: load from a local directory
+    # local_model_path = "./huggingface/segformer"
+    # feature_extractor = SegformerImageProcessor.from_pretrained(local_model_path)
+    # segformer_model = SegformerForSemanticSegmentation.from_pretrained(
+    #     local_model_path
+    # ).to(device)
+    
+    os.makedirs(ground_dir, exist_ok=True)
     
     for filename in tqdm(os.listdir(input_folder), desc="Creating Ground Masks"):
         base_name, _ = os.path.splitext(filename)
         input_path = os.path.join(input_folder, filename)
-        #output_path = f"GroundMasks/{base_name}_ground.png"
-        
-        #print(f"basename: {base_name}")
-        #print(f"filename: {filename}")
-        
-        #output_path = f"GroundMasks/{input_folder}/{base_name}_ground.png"
-        #output_path_folder = f"GroundMasks/{input_folder}"
-        
-        #output_path = f"{ground_dir}{base_name}_ground.png"
-        #output_path_folder = f"{ground_dir}"
+      
         
         output_path = os.path.join(ground_dir, f"{base_name}_ground.png")
-        output_path_folder = ground_dir
-
-        if not os.path.exists(output_path_folder):
-            os.makedirs(output_path_folder)
+   
 
         if not os.path.exists(output_path):
             create_ground_mask(input_path, output_path, feature_extractor, segformer_model, device)
