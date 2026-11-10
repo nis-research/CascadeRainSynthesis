@@ -182,6 +182,7 @@ When these arguments are omitted, the original CascadeRS parameter settings are 
 
 ---
 
+
 ## Generated Datasets
 
 We use the [Cityscapes dataset](https://www.cityscapes-dataset.com/) as the primary source of images for synthetic rain generation. Cityscapes provides urban driving scenes and corresponding semantic segmentation annotations, which can be used as scene priors for the rendering process.
@@ -206,16 +207,6 @@ We additionally generated a mixed dataset containing:
 The rainy images contain different, randomly mixed intensity levels.
 
 This dataset can be used for training computer vision models with synthetic adverse-weather augmentation.
-
-### Dataset Availability
-
-The generated datasets will be made publicly available.
-
-**Download:** [Link to be added]
-
-The original Cityscapes images and annotations are subject to the [Cityscapes dataset](https://www.cityscapes-dataset.com/) terms and conditions.
-
----
 
 ## Citation
 
