@@ -182,42 +182,6 @@ When these arguments are omitted, the original CascadeRS parameter settings are 
 
 ---
 
-<--!
-## Generated Datasets
-
-We use the [Cityscapes dataset](https://www.cityscapes-dataset.com/) as the primary source of images for synthetic rain generation. Cityscapes provides urban driving scenes and corresponding semantic segmentation annotations, which can be used as scene priors for the rendering process.
-
-We generated the following synthetic datasets using CascadeRS.
-
-### 1. Cityscapes with Controlled Rain Intensity
-
-We generated rainy versions of Cityscapes at **10 different intensity levels**:
-
-`10, 20, 30, 40, 50, 60, 70, 80, 90, 100`
-
-Each intensity level represents a different degree of synthetic rain and wet-weather effects, enabling evaluation of computer vision models under progressively more severe weather conditions.
-
-### 2. Cityscapes with Mixed Rain Intensity
-
-We additionally generated a mixed dataset containing:
-
-- **70% original Cityscapes images**
-- **30% CascadeRS-generated rainy images**
-
-The rainy images contain different, randomly mixed intensity levels.
-
-This dataset can be used for training computer vision models with synthetic adverse-weather augmentation.
-
-### Dataset Availability
-
-The generated datasets will be made publicly available.
-
-**Download:** [Link to be added]
-
-The original Cityscapes images and annotations are subject to the [Cityscapes dataset](https://www.cityscapes-dataset.com/) terms and conditions.
-
----
--->
 
 ## Generated Datasets
 
