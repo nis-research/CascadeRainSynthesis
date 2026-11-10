@@ -213,6 +213,17 @@ To facilitate reproducibility, we provide the exact dataset splits for both trai
 - [`cityscapes_mixed_train_70_30.txt`](dataset_splits/cityscapes_mixed_train_70_30.txt)
 - [`cityscapes_mixed_val_70_30.txt`](dataset_splits/cityscapes_mixed_val_70_30.txt)
 
+### 3. Additional Datasets and Real-Rain Evaluation
+
+CascadeRS is not limited to Cityscapes and can also be applied to other driving datasets without dataset-specific parameter adjustments. We demonstrate its applicability on:
+
+- [BDD100K](https://bair.berkeley.edu/blog/2018/05/30/bdd/)
+- [KITTI](https://www.cvlibs.net/datasets/kitti/)
+- [Roadmarks](http://www.ananth.in/RoadMarkingDetection.html)
+- [nuScenes](https://www.nuscenes.org/)
+
+Additionally, we use the [ACDC dataset](https://acdc.vision.ee.ethz.ch/), which contains real adverse-weather scenes, to evaluate the realism of our generated rain effects and their effectiveness for downstream computer vision tasks under real rainy conditions.
+
 ## Citation
 
 If you use CascadeRS or the generated datasets in your research, please cite:
