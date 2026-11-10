@@ -204,9 +204,14 @@ We additionally generated a mixed dataset containing:
 - **70% original Cityscapes images**
 - **30% CascadeRS-generated rainy images**
 
-The rainy images contain different, randomly mixed intensity levels.
+The synthetic images contain randomly assigned rain intensity levels (10–100).
 
 This dataset can be used for training computer vision models with synthetic adverse-weather augmentation.
+
+To facilitate reproducibility, we provide the exact dataset splits for both training and validation, including the selected images and their assigned rain intensities:
+
+- [`cityscapes_mixed_train_70_30.txt`](dataset_splits/cityscapes_mixed_train_70_30.txt)
+- [`cityscapes_mixed_val_70_30.txt`](dataset_splits/cityscapes_mixed_val_70_30.txt)
 
 ## Citation
 
